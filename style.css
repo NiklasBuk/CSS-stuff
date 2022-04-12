@@ -1,84 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
-
-*,
-*::before,
-*::after {
+* {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
 
-:root {
-   --clr-neon: hsl(317 100% 54%);
-   --clr-bg: hsl(323 21% 16%);
-}
-
-body {
+section {
+   display: flex;
+   justify-content: center;
+   align-items: center;
    min-height: 100vh;
-   display: grid;
-   place-items: center;
-   background: var(--clr-bg);
-   font-family: 'Balsamiq Sans', cursive;
-   color: var(--clr-neon);
+   background: hsl(207, 50%, 8%);
+   animation: animateColor 8s linear infinite;
 }
 
-.neon-button {
-   font-size: 4rem;
-   color: var(--clr-neon);
-   border: var(--clr-neon) 0.125em solid;
-   border-radius: 0.25em;;
-   text-decoration: none;
-   padding: 0.25em 1em;
-   cursor: pointer;
-   text-shadow:
-      0 0 0.125em hsl(0, 0%, 50%),
-      0 0 0.45em currentColor;
-   box-shadow: 
-      inset 0 0 0.5em 0 var(--clr-neon),
-      0 0 0.5em 0 var(--clr-neon);
+@keyframes animateColor {
+   0% {
+      filter: hue-rotate(0deg);
+   }
+   100% {
+      filter: hue-rotate(360deg);
+   }
+}
+
+section .container {
+   display: flex;
+}
+
+section .container .circle {
    position: relative;
+   width: 150px;
+   height: 150px;
+   margin: 0 -7.5px;
 }
 
-.neon-button::before {
-   pointer-events: none;
-   content: '';
+section .container .circle span {
    position: absolute;
-   background: var(--clr-neon);
-   top: 120%;
+   top: 0;
    left: 0;
    width: 100%;
    height: 100%;
-   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
-   filter: blur(1em);
-   opacity: 0.7;
+   transform: rotate(calc(18deg * var(--i)));
 }
 
-.neon-button:after {
+section .container .circle span::before {
    content: '';
    position: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
    right: 0;
-   box-shadow: 0 0 2em 0.5em var(--clr-neon);
-   opacity: 0;
-   background: var(--clr-neon);
-   z-index: -1;
-   transition: opacity 100ms linear;
+   top: calc(50% - 7.5px);
+   width: 15px;
+   height: 15px;
+   background: hsl(120, 100%, 50%);
+   border-radius: 50%;
+   box-shadow: 
+      0 0 10px hsl(120, 100%, 50%),
+      0 0 20px hsl(120, 100%, 50%),
+      0 0 40px hsl(120, 100%, 50%),
+      0 0 60px hsl(120, 100%, 50%),
+      0 0 80px hsl(120, 100%, 50%),
+      0 0 100px hsl(120, 100%, 50%);
+   transform: scale(0.1);
+   animation: animate 4s linear infinite;
+   animation-delay: calc(0.1s * var(--i));
 }
 
-.neon-button:focus,
-.neon-button:hover {
-   color: var(--clr-bg);
-   text-shadow: none;
+@keyframes animate {
+   0% {
+      transform: scale(1);
+   }
+   50%, 100% {
+      transform: scale(0.1);
+   }
 }
 
-.neon-button:focus::before,
-.neon-button:hover::before {
-   opacity: 1;
+section .container .circle:nth-child(2) {
+   transform: rotate(180deg);
 }
 
-.neon-button:focus::after,
-.neon-button:hover::after {
-   opacity: 1;
+section .container .circle:nth-child(2) span::before {
+   content: '';
+   animation-delay: calc(-0.1s * var(--i));
 }
