@@ -5,12 +5,42 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="style.css">
-   <script src="script.js" defer></script>
-   <title>Palette</title>
+   <title>Smile</title>
 </head>
-<body onload="addColor()">
-   <button class="btn" onclick="addColor()">Refresh</button>
-   <div class="container"></div>
+<body>
+   <!-- <label>
+      <input type="radio" name="blue">
+      <div class="face"></div>
+   </label>
+   <label>
+      <input type="radio" name="red">
+      <div class="face"></div>
+   </label>
+   <label>
+      <input type="radio" name="blue">
+      <div class="face"></div>
+   </label>
+   <label>
+      <input type="radio" name="red">
+      <div class="face"></div>
+   </label> -->
+   <script>
+      
+      const desk = document.querySelector('body')
+
+      for (let i = 0; i < 60; i++) {
+         const label = document.createElement('label')
+         const input = document.createElement('input')
+         const div = document.createElement('div')
+
+         input.setAttribute('type', 'radio')
+         i % 2 ? input.setAttribute('name', 'blue') : input.setAttribute('name', 'red')
+         div.classList.add('face')
+
+         label.appendChild(input)
+         label.appendChild(div)
+         desk.appendChild(label)
+      }
+   </script>
 </body>
-<footer></footer>
 </html>
