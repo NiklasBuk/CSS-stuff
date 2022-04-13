@@ -1,222 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
-
-* {
-   margin: 0;
-   padding: 0;
+*,
+*::before,
+*::after {
+   /* margin: 0;
+   padding: 0; */
    box-sizing: border-box;
-   font-family: 'Roboto Condensed', sans-serif;
+}
+
+:root {
+   --clr-neutral-900: hsl(280, 60%, 5%);
+   --clr-neutral-100: hsl(0, 0%, 100%);
+   --clr-accent-400: hsl(140, 90%, 60%);
 }
 
 body {
    display: grid;
-   place-items: center;
    min-height: 100vh;
-   background: hsl(200, 30%, 10%);
-}
-
-.container {
-   position: relative;
-   min-width: 300px;
-   min-height: 400px;
-   background: #333;
-   padding: 40px 30px 30px;
-   border-radius: 20px;
-   box-shadow: 
-      25px 25px 75px rgba(0, 0, 0, 0.25), 
-      10px 10px 70px rgba(0, 0, 0, 0.25), 
-      inset -5px -5px 15px rgba(0, 0, 0, 0.5),
-      inset 5px 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-body.lightmode .container {
-   background: hsl(180, 100%, 97%);
-   box-shadow: 
-      25px 25px 75px rgba(0, 0, 0, 0.15), 
-      10px 10px 70px rgba(0, 0, 0, 0.15), 
-      inset -5px -5px 15px rgba(0, 0, 0, 0.1),
-      inset 5px 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-.calculator {
-   position: relative;
-   display: grid;
-}
-
-.calculator .value {
-   position: relative;
-   grid-column: span 4;
-   height: 100px;
-   left: 10px;
-   width: calc(100% - 18px);
-   border: none;
-   outline: none;
-   background: hsl(120, 35%, 75%);
-   margin: 0 0 10px 0;
-   border-radius: 10px;
-   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75);
-   text-align: right;
-   padding: 10px;
-   font-size: 2em;
-}
-
-body.lightmode .calculator .value {
-   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
-}
-
-.calculator span {
-   position: relative;
-   display: grid;
    place-items: center;
-   width: 80px;
-   height: 80px;
-   margin: 8px;
-   background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
-   box-shadow: 
-      inset -8px 0 8px rgba(0, 0, 0, 0.15), 
-      inset 0 -8px 8px rgba(0, 0, 0, 0.25), 
-      0 0 0 2px rgba(0, 0, 0, 0.75), 
-      10px 20px 25px rgba(0, 0, 0, 0.4);
-   color: #fff;
-   cursor: pointer;
-   user-select: none;
-   font-size: 20px;
-   font-weight: 400;
-   border-radius: 10px;
+   line-height: 1.6em;
+   background: var(--clr-neutral-900);
+   font-family: sans-serif;
 }
 
-body.lightmode .calculator span {
-
-   background: linear-gradient(180deg, hsl(180, 100%, 97%), hsl(180, 100%, 94%));
-   box-shadow: 
-      inset -8px 0 8px rgba(0, 0, 0, 0.15), 
-      inset 0 -8px 8px rgba(0, 0, 0, 0.15), 
-      0 0 0 2px rgba(0, 0, 0, 0.3), 
-      10px 20px 25px rgba(0, 0, 0, 0.25);
-   color: hsl(200, 30%, 30%);
+.card {
+   color: var(--clr-neutral-100);
+   background-image: url(card.png);
+   background-size: cover;
+   background-position: right;
+   padding: 10rem 0 0;
+   max-width: 35ch;
+   border-radius: 0.5rem;
+   overflow: hidden;
+   transition: transform 0.5s ease;
 }
 
-.calculator span::before {
+.card:hover,
+.card:focus-within {
+   transform: scale(1.05);
+}
+
+.card-content {
+   --padding: 1.5rem;
+   padding: var(--padding);
+   background: linear-gradient(
+      hsl(0 0% 0% / 0),
+      hsl(20 0% 0% / 0.3) 20%,
+      hsl(0 0% 0% / 1)
+   );
+}
+
+.card-title {
+   position: relative;
+   width: max-content;
+   max-width: 100%;
+}
+
+.card-title::after {
    content: '';
    position: absolute;
-   top: 6px;
-   bottom: 11px;
-   left: 6px;
-   right: 10px;
-   background: linear-gradient(90deg, #2d2d2d, #4d4d4d);
-   border-radius: 10px;
-   box-shadow: 
-      -5px -5px 15px rgba(0, 0, 0, 0.1), 
-      10px 5px 10px rgba(0, 0, 0, 0.15);
-   border-top: 1px solid #0009;
-   border-bottom: 1px solid #0004;
-   border-left: 1px solid #0004;
+   height: 4px;
+   bottom: -6px;
+   left: calc(var(--padding) * -1);
+   width: calc(100% + var(--padding));
+   background: var(--clr-accent-400);
+   transform-origin: left;
+   transition: transform 0.5s ease;
 }
 
-body.lightmode .calculator span::before {
-   background: linear-gradient(90deg, hsl(180, 100%, 97%), hsl(180, 100%, 94%));
-   border-radius: 10px;
-   box-shadow: 
-      -10px -10px 10px rgba(255, 255, 255, 0.25), 
-      10px 5px 10px rgba(0, 0, 0, 0.15);
-   border-top: 1px solid #fff9;
-   border-bottom: 1px solid #fff4;
-   border-left: 1px solid #fff4;
+.card:hover .card-title::after,
+.card:focus-within .card-title::after {
+   transform: scaleX(1);
 }
 
-.calculator span:active {
-   filter: brightness(1.5);
-}
-
-body.lightmode .calculator span:active {
-   filter: brightness(0.9);
-}
-
-.calculator span i {
-   position: relative;
-   font-style: normal;
-   font-size: 1.5em;  
-}
-
-body.lightmode .calculator .clear,
-.calculator .clear {
-   grid-column: span 2;
-   width: 176px;
-   background: #f00;
-}
-
-body.lightmode .calculator .clear::before, 
-.calculator .clear::before {
-   background: linear-gradient(90deg, hsl(0, 100%, 50%), hsl(0, 100%, 70%));
-   border-top: 1px solid #fff9;
-   border-bottom: 1px solid #fff4;
-   border-left: 1px solid #fff4;
-}
-
-body.lightmode .calculator .equal, 
-.calculator .equal {
-   grid-row: span 2;
-   height: 176px;
-   background: hsl(240, 80%, 70%);
-}
-
-body.lightmode .calculator .equal::before, 
-.calculator .equal::before {
-   background: linear-gradient(90deg, hsl(240, 90%, 70%), hsl(240, 90%, 80%));
+.card-body {
+   color: rgb(255 255 255 / 0.85);
 }
 
 .btn {
-   position: absolute;
-   top: 20px;
-   right: 20px;
-   width: 60px;
-   height: 60px;
-   background: #333;
-   font-size: 1.5em;
-   box-shadow: 
-      5px 5px 15px rgba(0, 0, 0, 0.25), 
-      5px 5px 30px rgba(0, 0, 0, 0.25), 
-      inset -2px -2px 5px rgba(0, 0, 0, 0.25), 
-      inset 2px 2px 5px rgba(0, 0, 0, 0.25);
-   border-radius: 10px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
    cursor: pointer;
+   display: inline-block;
+   text-decoration: none;
+   color: var(--clr-neutral-900);
+   background: var(--clr-accent-400);
+   padding: 0.5em 1.25em;
+   border-radius: 0.25em;
 }
 
-.btn ion-icon {
-   color: #fff;
+.btn:hover,
+.btn:focus {
+   background: var(--clr-neutral-100);
 }
 
-.btn strong {
-   display: none;
+/* медиа для пользователей с целевых устройств с мышкой и клавиатурой */
+
+@media (hover) {
+   .card-content {
+      transform: translateY(65%);
+      transition: transform 0.5s ease;
+   }
+   .card:hover .card-content,
+   .card:focus-within .card-content {
+      transform: translateY(0);
+      transition-delay: 0.25s;
+   }
+
+   .card:focus-within .card-content {
+      transition-duration: 0s;
+   }
+
+   .card-content > *:not(.card-title) {
+      opacity: 0;
+      transition: opacity 0.5s linear;
+   }
+
+   .card:hover .card-content > *:not(.card-title),
+   .card:focus-within .card-content > *:not(.card-title) {
+      opacity: 1;
+      transition-delay: 0.5s;
+   }
+
+   .card-title::after {
+      transform: scaleX(0);
+   }
 }
 
-.btn strong:nth-child(1) {
-   display: block;
-}
+/* медиа для пользователей с отключенными анимациями в настройках ОС. Значение no-preference для теста */
 
-body.lightmode {
-   background: hsl(180, 100%, 97%);
-}
-
-body.lightmode .btn strong:nth-child(1) {
-   display: none;
-}
-
-body.lightmode .btn strong:nth-child(2) {
-   display: block;
-}
-
-body.lightmode ion-icon {
-   color: hsl(240, 90%, 50%);
-}
-
-body.lightmode .btn {
-   background: hsl(180, 100%, 95%);
-   box-shadow: 
-      5px 5px 15px rgba(0, 0, 0, 0.1), 
-      5px 5px 30px rgba(0, 0, 0, 0.15), 
-      inset -2px -2px 5px rgba(0, 0, 0, 0.1), 
-      inset 2px 2px 5px rgba(0, 0, 0, 0.15);
+@media (prefers-reduced-motion: reduce) {
+   *,
+   *::before,
+   *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+      transition-delay: 0ms !important;
+   }
 }
