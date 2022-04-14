@@ -4,32 +4,33 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Roboto Condensed', sans-serif;
 }
 
 body {
    background: url(raketa-arkonsoft.jpeg), hsl(240 80% 30% / 0.2);
    background-blend-mode: saturation;
    background-size: cover;
+   font-family: 'Merriweather', serif;
 }
 
 .calendar {
-   font-family: 'Merriweather', serif;
+   font-size: 1.5em;
    font-style: italic;
    color: hsl(0 100% 100% / 0.7);
+   margin: 0 150px;
    padding: 20px 40px;
 }
 
 .months-container {
    justify-content: center;
-   row-gap: 20px;
-   column-gap: 55px;
+   row-gap: 40px;
+   column-gap: 60px;
 }
 
 .calendar .months-container .month-container {
    background: hsl(240 100% 100% / 0.05);
    border-radius: 7px;
-   padding: 5px 20px;
+   padding: 10px 20px;
    min-width: 280px;
    box-shadow: 15px 15px 40px hsl(0 0% 0% / 0.15);
 }
@@ -63,15 +64,15 @@ table.month td.day .day-content:hover {
 }
 
 .calendar .calendar-header .year-title {
-   font-size: 1.7em;
+   font-size: 2em;
 }
 
 .calendar .calendar-header .year-neighbor {
-   font-size: 1.3em;
+   font-size: 1.6em;
 }
 
 .calendar .calendar-header .year-neighbor2 {
-   font-size: 1em;
+   font-size: 1.2em;
 }
 
 .calendar-header table th span {
@@ -79,8 +80,12 @@ table.month td.day .day-content:hover {
    opacity: 0.8;
 }
 
-@media (min-width: 1365px) and (max-width: 1920px) {
+@media (min-width: 1680px) and (max-width: 2019px) {
    .calendar .months-container .month-container:last-child {
       color: hsl(240 10% 20% / 0.7);
+   }
+
+   .calendar {
+      margin: 0 150px;
    }
 }
