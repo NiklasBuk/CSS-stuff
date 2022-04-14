@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&display=swap');
 
 * {
    margin: 0;
@@ -8,215 +8,79 @@
 }
 
 body {
-   display: grid;
-   place-items: center;
-   min-height: 100vh;
-   background: hsl(200, 30%, 10%);
+   background: url(raketa-arkonsoft.jpeg), hsl(240 80% 30% / 0.2);
+   background-blend-mode: saturation;
+   background-size: cover;
 }
 
-.container {
-   position: relative;
-   min-width: 300px;
-   min-height: 400px;
-   background: #333;
-   padding: 40px 30px 30px;
-   border-radius: 20px;
-   box-shadow: 
-      25px 25px 75px rgba(0, 0, 0, 0.25), 
-      10px 10px 70px rgba(0, 0, 0, 0.25), 
-      inset -5px -5px 15px rgba(0, 0, 0, 0.5),
-      inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+.calendar {
+   font-family: 'Merriweather', serif;
+   font-style: italic;
+   color: hsl(0 100% 100% / 0.7);
+   padding: 20px 40px;
 }
 
-body.lightmode .container {
-   background: hsl(180, 100%, 97%);
-   box-shadow: 
-      25px 25px 75px rgba(0, 0, 0, 0.15), 
-      10px 10px 70px rgba(0, 0, 0, 0.15), 
-      inset -5px -5px 15px rgba(0, 0, 0, 0.1),
-      inset 5px 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-.calculator {
-   position: relative;
-   display: grid;
-}
-
-.calculator .value {
-   position: relative;
-   grid-column: span 4;
-   height: 100px;
-   left: 10px;
-   width: calc(100% - 18px);
-   border: none;
-   outline: none;
-   background: hsl(120, 35%, 75%);
-   margin: 0 0 10px 0;
-   border-radius: 10px;
-   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75);
-   text-align: right;
-   padding: 10px;
-   font-size: 2em;
-}
-
-body.lightmode .calculator .value {
-   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
-}
-
-.calculator span {
-   position: relative;
-   display: grid;
-   place-items: center;
-   width: 80px;
-   height: 80px;
-   margin: 8px;
-   background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
-   box-shadow: 
-      inset -8px 0 8px rgba(0, 0, 0, 0.15), 
-      inset 0 -8px 8px rgba(0, 0, 0, 0.25), 
-      0 0 0 2px rgba(0, 0, 0, 0.75), 
-      10px 20px 25px rgba(0, 0, 0, 0.4);
-   color: #fff;
-   cursor: pointer;
-   user-select: none;
-   font-size: 20px;
-   font-weight: 400;
-   border-radius: 10px;
-}
-
-body.lightmode .calculator span {
-
-   background: linear-gradient(180deg, hsl(180, 100%, 97%), hsl(180, 100%, 94%));
-   box-shadow: 
-      inset -8px 0 8px rgba(0, 0, 0, 0.15), 
-      inset 0 -8px 8px rgba(0, 0, 0, 0.15), 
-      0 0 0 2px rgba(0, 0, 0, 0.3), 
-      10px 20px 25px rgba(0, 0, 0, 0.25);
-   color: hsl(200, 30%, 30%);
-}
-
-.calculator span::before {
-   content: '';
-   position: absolute;
-   top: 6px;
-   bottom: 11px;
-   left: 6px;
-   right: 10px;
-   background: linear-gradient(90deg, #2d2d2d, #4d4d4d);
-   border-radius: 10px;
-   box-shadow: 
-      -5px -5px 15px rgba(0, 0, 0, 0.1), 
-      10px 5px 10px rgba(0, 0, 0, 0.15);
-   border-top: 1px solid #0009;
-   border-bottom: 1px solid #0004;
-   border-left: 1px solid #0004;
-}
-
-body.lightmode .calculator span::before {
-   background: linear-gradient(90deg, hsl(180, 100%, 97%), hsl(180, 100%, 94%));
-   border-radius: 10px;
-   box-shadow: 
-      -10px -10px 10px rgba(255, 255, 255, 0.25), 
-      10px 5px 10px rgba(0, 0, 0, 0.15);
-   border-top: 1px solid #fff9;
-   border-bottom: 1px solid #fff4;
-   border-left: 1px solid #fff4;
-}
-
-.calculator span:active {
-   filter: brightness(1.5);
-}
-
-body.lightmode .calculator span:active {
-   filter: brightness(0.9);
-}
-
-.calculator span i {
-   position: relative;
-   font-style: normal;
-   font-size: 1.5em;  
-}
-
-body.lightmode .calculator .clear,
-.calculator .clear {
-   grid-column: span 2;
-   width: 176px;
-   background: #f00;
-}
-
-body.lightmode .calculator .clear::before, 
-.calculator .clear::before {
-   background: linear-gradient(90deg, hsl(0, 100%, 50%), hsl(0, 100%, 70%));
-   border-top: 1px solid #fff9;
-   border-bottom: 1px solid #fff4;
-   border-left: 1px solid #fff4;
-}
-
-body.lightmode .calculator .equal, 
-.calculator .equal {
-   grid-row: span 2;
-   height: 176px;
-   background: hsl(240, 80%, 70%);
-}
-
-body.lightmode .calculator .equal::before, 
-.calculator .equal::before {
-   background: linear-gradient(90deg, hsl(240, 90%, 70%), hsl(240, 90%, 80%));
-}
-
-.btn {
-   position: absolute;
-   top: 20px;
-   right: 20px;
-   width: 60px;
-   height: 60px;
-   background: #333;
-   font-size: 1.5em;
-   box-shadow: 
-      5px 5px 15px rgba(0, 0, 0, 0.25), 
-      5px 5px 30px rgba(0, 0, 0, 0.25), 
-      inset -2px -2px 5px rgba(0, 0, 0, 0.25), 
-      inset 2px 2px 5px rgba(0, 0, 0, 0.25);
-   border-radius: 10px;
-   display: flex;
+.months-container {
    justify-content: center;
-   align-items: center;
-   cursor: pointer;
+   row-gap: 20px;
+   column-gap: 55px;
 }
 
-.btn ion-icon {
+.calendar .months-container .month-container {
+   background: hsl(240 100% 100% / 0.05);
+   border-radius: 7px;
+   padding: 5px 20px;
+   min-width: 280px;
+   box-shadow: 15px 15px 40px hsl(0 0% 0% / 0.15);
+}
+
+.calendar table.month th.month-title {
+   color: steelblue;
+   font-size: 1.2em;
+   font-weight: 200;
+}
+
+table.month td:first-child,
+table.month thead th:first-child {
+   color: tomato;
+}
+
+.calendar table.month td.day .day-content {
+   padding: 6px 8px;
+}
+
+table.month td.day .day-content:hover {
+   background: steelblue;
    color: #fff;
 }
 
-.btn strong {
-   display: none;
+.calendar .calendar-header {
+   border: none;
 }
 
-.btn strong:nth-child(1) {
-   display: block;
+.calendar .calendar-header table th:hover {
+   background: transparent;
 }
 
-body.lightmode {
-   background: hsl(180, 100%, 97%);
+.calendar .calendar-header .year-title {
+   font-size: 1.7em;
 }
 
-body.lightmode .btn strong:nth-child(1) {
-   display: none;
+.calendar .calendar-header .year-neighbor {
+   font-size: 1.3em;
 }
 
-body.lightmode .btn strong:nth-child(2) {
-   display: block;
+.calendar .calendar-header .year-neighbor2 {
+   font-size: 1em;
 }
 
-body.lightmode ion-icon {
-   color: hsl(240, 90%, 50%);
+.calendar-header table th span {
+   font-style: normal;
+   opacity: 0.8;
 }
 
-body.lightmode .btn {
-   background: hsl(180, 100%, 95%);
-   box-shadow: 
-      5px 5px 15px rgba(0, 0, 0, 0.1), 
-      5px 5px 30px rgba(0, 0, 0, 0.15), 
-      inset -2px -2px 5px rgba(0, 0, 0, 0.1), 
-      inset 2px 2px 5px rgba(0, 0, 0, 0.15);
+@media (min-width: 1365px) and (max-width: 1920px) {
+   .calendar .months-container .month-container:last-child {
+      color: hsl(240 10% 20% / 0.7);
+   }
 }
