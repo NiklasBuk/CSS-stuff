@@ -1,0 +1,98 @@
+body {
+   min-height: 100vh;
+   margin: 2rem;
+   font-family: system-ui;
+   font-size: 1.25rem;
+   line-height: 1.5;
+   color: hsl(0 0% 30%);
+}
+
+.container {
+   width: 900px;
+   margin: 0 auto;
+}
+
+h1, 
+h2 {
+   color: hsl(200, 40%, 40%);
+}
+
+.button {
+   border: 0;
+   cursor: pointer;
+   background: hsl(0 0% 30%);
+   color: hsl(0 0% 90%);
+   font-weight: 700;
+   padding: 0.5rem 1.25rem;
+}
+
+.button:hover, 
+.button:focus {
+   background:hsl(200, 40%, 40%);
+}
+
+.modal {
+   box-shadow: 0 0 0 100vw rgb(0 0 0 / 0.5);
+   background: #fff;
+   color: #222;
+   border: 0;
+   border-radius: 0.25rem;
+   padding: 0;
+}
+
+.modal-content {
+   padding: 1rem;
+}
+
+.modal::backdrop {
+   background: rgb(0 0 0 / 0.5);
+   opacity: 0;
+   transition: opacity 0.5s;
+}
+
+.modal[open] {
+   animation:
+      slide-up 1s forwards,
+      fade-in 0.5s forwards;
+}
+
+.modal[open]::backdrop {
+   animation: fade-in 0.5s forwards;
+}
+
+.modal[closing] {
+   display: block;
+   pointer-events: none;
+   inset: 0;
+   animation: fade-out 0.5s forwards;
+}
+
+.modal[closing]::backdrop {
+   animation: fade-out 0.5s forwards;
+}
+
+@keyframes fade-in {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+@keyframes fade-out {
+   100% {
+      opacity: 0;
+   }
+   0% {
+      opacity: 1;
+   }
+}
+
+@keyframes slide-up {
+   0% {
+      transform: translateY(100%);
+   }
+   100% {
+      transform: translateY(0%);
+   }
+}
