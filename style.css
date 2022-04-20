@@ -1,0 +1,73 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background: hsl(0, 0%, 0%);
+   overflow: hidden;
+   min-height: 100vh;
+   cursor: none;
+}
+
+.container {
+   position: relative;
+   height: 100vh;
+   overflow: hidden;
+}
+
+.row {
+   display: inline-flex;
+   margin: -32px 0 0 -50px;
+}
+
+.hexagon {
+   position: relative;
+   width: 100px;
+   height: 110px;
+   margin: 1px;
+   transition: 2s;
+   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+   background: linear-gradient(
+      90deg, 
+      hsl(240, 5%, 10%) 50%, 
+      hsl(240, 0%, 0%) 50%);
+}
+
+.hexagon:hover {
+   transition: 0s;
+}
+
+.row:nth-child(even) {
+   margin-left: 1px;
+}
+
+.cursor {
+   position: absolute;
+   width: 500px;
+   height: 500px;
+   border-radius: 50%;
+   animation: anim 2s linear infinite;
+   visibility: hidden;
+   transition: 0.1s;
+   transform: translate(-50%, -50%);
+}
+
+@keyframes anim {
+   0% {
+      filter: hue-rotate(0deg);
+   }
+
+   100% {
+      filter: hue-rotate(360deg);
+   }
+}
+
+body:hover .cursor {
+   background: radial-gradient(
+      circle, 
+      hsl(120 100% 50%) 23%, 
+      hsl(0 0% 0% / 0.1) 100%);
+   visibility: visible;
+}
